@@ -1,0 +1,18 @@
+<header>
+    <nav>
+        <div>
+            <section class="navbar-section">
+                <a href="/" class="btn btn-link"> Home </a>
+                <a href="/projects" class="btn btn-link"> Projects </a>
+                <a href="/about" class="btn btn-link"> About </a>
+                <a href="/skills" class="btn btn-link">Skills</a>
+                <a href="/contact" class="btn btn-link"> Contact </a>
+                 {{#if session.loggedIn}}
+                    <a href="/login-get" class="btn btn-link">User1</a>
+                {{else}}
+                    <a href="/login-get" class="btn btn-link">Login</a>
+                {{/if}}
+            </section>
+        </div>
+    </nav>
+</header>

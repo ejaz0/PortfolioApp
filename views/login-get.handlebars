@@ -1,0 +1,19 @@
+<div id="mainlogin">
+  <h1>Login</h1>
+  <div class="loginform">
+    {{#if session.loggedIn}}
+      <p>You are logged in as {{session.username}}</p>
+      <form action="/logout" method="POST">
+        <button type="submit">Sign Out</button>
+      </form>
+    {{else}}
+      <form action="/login-get" method="POST" id="formlogin">
+        <label for="uname">Username</label>
+        <input type="text" name="uname" placeholder="username" required>
+        <label for="upassword">Password</label>
+        <input type="password" name="upassword" placeholder="password" required>
+        <button type="submit">Login</button>
+      </form>
+    {{/if}}
+  </div>
+</div>
