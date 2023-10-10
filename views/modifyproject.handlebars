@@ -1,0 +1,36 @@
+<div id="main">
+    <div>
+        <h1>Modify Project</h1>
+        <div>
+            {{#if isLoggedIn}}
+            {{#if isAdmin}}
+            <form action="/projects/update/{{project.pid}}" method="post">
+            <fieldset>
+                <label for="projname">Project Name:</label>
+                <input type="text" name="projname" id="projname" value="{{project.pname}}" required="required">
+                <label for="projyear">Project Year:</label>
+                <input type="number" name="projyear" id="projyear" placeholder="2023" value="{{project.pyear}}" required="required">
+                <textarea name="projdesc" id="projdesc" cols="30" rows="10" required="required">{{project.projdesc}}</textarea>
+                <label for="projtype">Project Type:</label>
+                <select name="projtype" id="projtype" required="required">
+                    <option value="Research"{{#if (theTypeR project.ptype)}} selected="selected"{{/if}}>Research</option>
+                    <option value="Teaching"{{#if (theTypeT project.ptype)}} selected="selected"{{/if}}>Teaching</option>
+                    <option value="Other"{{#if (theTypeO project.ptype)}} selected="selected"{{/if}}>Other</option>
+                </select>
+                <label for="projimg">Project Image URL: </label>
+                <input type="text" name="projimg" id="projimg" placeholder="/img/" value="{{project.pimgURL}}" required="required">
+            </fieldset>
+            <input type="submit" value="Add Project">
+            </form>
+            {{else}}
+            <p>Sorry must be administrator</p>
+            {{/if}}
+            {{else}}
+            <p>
+                Sorry must be logged in to add a new project!
+                Please go to the <a href="/login-get">login</a>
+            </p>
+            {{/if}}
+        </div>
+    </div>
+</div>

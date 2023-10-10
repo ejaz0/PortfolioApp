@@ -1,6 +1,11 @@
 <div id="main">
     <div class="container">
         <h1>My Skills</h1>
+        {{#if isAdmin}}
+        <div>
+            <a href="/skills/new">New Skill</a>
+        </div>
+        {{/if}}
         <div class="columns col-gapless">
             {{#if dbError}}
                 <div>
@@ -14,6 +19,11 @@
                             <div class="card-header">
                                 <div class="card-title h3">{{sname}}</div>
                                 <div class="card-subtitle text-gray">{{sdesc}} --- {{stype}}</div>
+                                {{#if ../isAdmin}}
+                                <div>
+                                    <a href="/skills/update/{{sid}}">Modify</a> - <a href="/skills/delete/{{sid}}" class="important">Delete</a>
+                                </div>
+                                {{/if}}
                             </div>
                         </div>
                     </div>

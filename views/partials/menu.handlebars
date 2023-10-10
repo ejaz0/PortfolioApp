@@ -1,18 +1,16 @@
 <header>
-    <nav>
-        <div>
-            <section class="navbar-section">
-                <a href="/" class="btn btn-link"> Home </a>
-                <a href="/projects" class="btn btn-link"> Projects </a>
-                <a href="/about" class="btn btn-link"> About </a>
-                <a href="/skills" class="btn btn-link">Skills</a>
-                <a href="/contact" class="btn btn-link"> Contact </a>
-                 {{#if session.loggedIn}}
-                    <a href="/login-get" class="btn btn-link">User1</a>
+    <nav class="navbar">
+                <ul>
+                    <li><a href="/" class="btn btn-link"> Home </a></li>
+                    <li><a href="/projects" class="btn btn-link"> Projects </a></li>
+                    <li><a href="/about" class="btn btn-link"> About </a></li>
+                    <li><a href="/skills" class="btn btn-link">Skills</a></li>
+                    <li><a href="/contact" class="btn btn-link"> Contact </a></li>
+                     {{#if isLoggedIn}}
+                    <li><a href="/login-get" class="btn btn-link">{{name}}</a></li>
                 {{else}}
-                    <a href="/login-get" class="btn btn-link">Login</a>
-                {{/if}}
-            </section>
-        </div>
+                <li><a href="/login-get" class="btn btn-link">Login</a></li>
+                  {{/if}}
+                </ul>
     </nav>
 </header>

@@ -1,0 +1,32 @@
+<div id="main">
+    <div>
+        <h1>Modify Skills</h1>
+        <div>
+            {{#if isLoggedIn}}
+            {{#if isAdmin}}
+            <form action="/skills/update/{{skills.sid}}" method="post">
+            <fieldset>
+                <label for="sname">Skills Name:</label>
+                <input type="text" name="sname" id="sname" value="{{skills.sname}}" required="required">
+                <textarea name="sdesc" id="sdesc" cols="30" rows="10" required="required">{{skills.sdesc}}</textarea>
+                <label for="stype">Skills Type:</label>
+                <select name="stype" id="stype" required="required">
+                    <option value="TechnicalSkill"{{#if (theTypeR skills.stype)}} selected="selected"{{/if}}>Technical Skill</option>
+                    <option value="SoftSkill"{{#if (theTypeT skills.stype)}} selected="selected"{{/if}}>Soft Skill</option>
+                    <option value="OtherSkill"{{#if (theTypeO skills.stype)}} selected="selected"{{/if}}>Other Skill</option>
+                </select>
+            </fieldset>
+            <input type="submit" value="Add Skill">
+            </form>
+            {{else}}
+            <p>Sorry must be administrator</p>
+            {{/if}}
+            {{else}}
+            <p>
+                Sorry must be logged in to add a new project!
+                Please go to the <a href="/login-get">login</a>
+            </p>
+            {{/if}}
+        </div>
+    </div>
+</div>

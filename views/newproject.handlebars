@@ -1,0 +1,35 @@
+<div id="main">
+    <div>
+        <h1>New Project</h1>
+        <div>
+            {{#if isLoggedIn}}
+               {{#if isAdmin}}
+               <form action="/projects/new" method="post">
+               <fieldset>
+                <label for="projname">Project Name:</label>
+                <input type="text" name="projname" id="projname" required="required">
+                <label for="projyear">Project Year:</label>
+                <input type="number" name="projyear" id="projyear" placeholder="2023" required="required">
+                <textarea name="projdesc" id="projdesc" cols="30" rows="10" required="required"></textarea>
+                <label for="projtype">Project Type:</label>
+                <select name="projtype" id="projtype" required="required">
+                    <option value="Research">Research</option>
+                    <option value="Education">Education</option>
+                    <option value="Other">Other</option>
+                </select>
+                <label for="projimg">Project Image URL:</label>
+                <input type="text" name="projimg" id="projimg" placeholder="/img/" required="required">
+               </fieldset>
+               <input type="submit" value="Add Project">
+               </form>
+               {{else}}
+               <p>Not authoirzed</p>
+               {{/if}}
+               {{else}}
+               <p>Sorry must be logged in to add new projet
+                 Please go to the <a href="/login-get">login</a>
+               </p>
+               {{/if}}
+        </div>
+    </div>
+</div>

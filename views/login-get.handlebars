@@ -1,18 +1,21 @@
 <div id="mainlogin">
   <h1>Login</h1>
   <div class="loginform">
-    {{#if session.loggedIn}}
-      <p>You are logged in as {{session.username}}</p>
+    {{#if isLoggedIn}}
+      <p>You are logged in as {{name}}</p>
       <form action="/logout" method="POST">
         <button type="submit">Sign Out</button>
       </form>
     {{else}}
       <form action="/login-get" method="POST" id="formlogin">
-        <label for="uname">Username</label>
-        <input type="text" name="uname" placeholder="username" required>
-        <label for="upassword">Password</label>
-        <input type="password" name="upassword" placeholder="password" required>
+        <label for="_csrf">CSRF Token</label>
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        <label for="un">Username</label>
+        <input type="text" name="un" placeholder="username" required>
+        <label for="pw">Password</label>
+        <input type="password" name="pw" placeholder="password" required>
         <button type="submit">Login</button>
+        <a href="/register-get">Don't have an account?</a>
       </form>
     {{/if}}
   </div>

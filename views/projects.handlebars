@@ -1,6 +1,11 @@
 <div id="main">
     <div class="container">
         <h1>My projects</h1>
+        {{#if isAdmin}}
+        <div>
+            <a href="/projects/new" class="btn btn-link">New Project</a>
+        </div>
+        {{/if}}
         <div class="columns col-gapless">
             {{#if dbError}}
                 <div>
@@ -17,6 +22,13 @@
                             <div class="card-header">
                                 <div class="card-title h3">{{pname}}</div>
                                 <div class="card-subtitle text-gray">{{pyear}} --- {{ptype}}</div>
+                            </div>
+                            <div class="card-footer">
+                                {{#if ../isAdmin}}
+                                <div>
+                                    <a href="/projects/update/{{pid}}">Modify</a> - <a href="/projects/delete/{{pid}}" class="important">Delete</a>
+                                </div>
+                                {{/if}}
                             </div>
                         </div>
                     </div>

@@ -1,0 +1,31 @@
+<div id="main">
+    <div>
+        <h1>New Project</h1>
+        <div>
+            {{#if isLoggedIn}}
+               {{#if isAdmin}}
+               <form action="/skills/new" method="post">
+               <fieldset>
+                <label for="sname">Skill Name:</label>
+                <input type="text" name="sname" id="sname" required="required">
+                <textarea name="sdesc" id="sdesc" cols="30" rows="10" required="required"></textarea>
+                <label for="stype">Skill Type:</label>
+                <select name="stype" id="stype" required="required">
+                    <option value="TechnicalSkill">Technical Skill</option>
+                    <option value="SoftSkill">Soft Skill</option>
+                    <option value="OtherSkill">Other Skill</option>
+                </select>
+               </fieldset>
+               <input type="submit" value="Add Skill">
+               </form>
+               {{else}}
+               <p>Not authoirzed</p>
+               {{/if}}
+               {{else}}
+               <p>Sorry must be logged in to add new projet
+                 Please go to the <a href="/login-get">login</a>
+               </p>
+               {{/if}}
+        </div>
+    </div>
+</div>
