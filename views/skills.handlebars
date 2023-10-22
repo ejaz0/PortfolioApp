@@ -2,8 +2,8 @@
     <div class="container">
         <h1>My Skills</h1>
         {{#if isAdmin}}
-        <div>
-            <a href="/skills/new">New Skill</a>
+        <div class="modifier">
+            <a href="/skills/new"><span class="SpanN">New Skill</span></a>
         </div>
         {{/if}}
         <div class="columns col-gapless">
@@ -20,10 +20,13 @@
                                 <div class="card-title h3">{{sname}}</div>
                                 <div class="card-subtitle text-gray">{{sdesc}} --- {{stype}}</div>
                                 {{#if ../isAdmin}}
-                                <div>
-                                    <a href="/skills/update/{{sid}}">Modify</a> - <a href="/skills/delete/{{sid}}" class="important">Delete</a>
+                                <div class="modifier">
+                                    <a href="/skills/update/{{sid}}">Modifiy</a> - <a href="/skills/delete/{{sid}}" class="important"><span class="spanD">Delete</span></a>
                                 </div>
                                 {{/if}}
+                                 <div>
+                                      <a href="/skills/about/{{sid}}">More Info</a>
+                                </div>
                             </div>
                         </div>
                     </div>

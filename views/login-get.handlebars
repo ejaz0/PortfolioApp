@@ -8,7 +8,7 @@
       </form>
     {{else}}
       <form action="/login-get" method="POST" id="formlogin">
-        <label for="_csrf">CSRF Token</label>
+        <label for="_csrf"></label>
         <input type="hidden" name="_csrf" value="{{ csrfToken }}">
         <label for="un">Username</label>
         <input type="text" name="un" placeholder="username" required>

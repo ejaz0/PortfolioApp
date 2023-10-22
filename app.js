@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
 const SQLiteStore = require('connect-sqlite3')(session);
 const db = new sqlite3.Database('projects-jl3.db');
-
+  
 
 // creates table projects at startup
 db.run("CREATE TABLE IF NOT EXISTS projects (pid INTEGER PRIMARY KEY, pname TEXT NOT NULL, pyear INTEGER NOT NULL, pdesc TEXT NOT NULL, ptype TEXT NOT NULL, pimgURL TEXT NOT NULL)", (error) => {
@@ -20,11 +20,11 @@ db.run("CREATE TABLE IF NOT EXISTS projects (pid INTEGER PRIMARY KEY, pname TEXT
       console.log("---> Table projects created!")
   
       const projects=[
-        { "id":"1", "name":"Counting people with a camera", "type":"research", "desc": "The purpose of this project is to count people passing through a corridor and to know how many are in the room at a certain time.", "year": 2022, "dev":"Python and OpenCV (Computer vision) library", "url":"/img/counting.png" },
-        { "id":"2", "name":"Visualisation of 3D medical images", "type":"research", "desc": "The project makes a 3D model of the analysis of the body of a person and displays the detected health problems. It is useful for doctors to view in 3D their patients and the evolution of a disease.", "year": 2012, "url":"/img/medical.png" },
-        { "id":"3", "name":"Multiple questions system", "type":"teaching", "desc": "During the lockdowns in France, this project was useful to test the students online with a Quizz system.", "year": 2021, "url":"/img/qcm07.png" },
-        { "id":"4", "name":"Image comparison with the Local Dissmilarity Map", "desc": "The project is about finding and quantifying the differences between two images of the same size. The applications were numerous: satallite imaging, medical imaging,...", "year": 2020, "type":"research", "url":"/img/diaw02.png" },
-        { "id":"5", "name":"Management system for students' internships", "desc": "This project was about the creation of a database to manage the students' internships.", "year": 2012, "type":"teaching", "url":"/img/management.png" }
+        { "id":"1", "name":"Creating monitoring programs", "type":"research", "desc": "The purpose of this project is to count people passing through a corridor and to know how many are in the room at a certain time.", "year": 2022, "dev":"Python and OpenCV (Computer vision) library", "url":"/img/counting.png" },
+        { "id":"2", "name":"Autonomus Self Driving Vehicles", "type":"research", "desc": "The project makes a 3D model of the analysis of the body of a person and displays the detected health problems. It is useful for doctors to view in 3D their patients and the evolution of a disease.", "year": 2012, "url":"/img/medical.png" },
+        { "id":"3", "name":"3D Physics Visualisation", "type":"teaching", "desc": "During the lockdowns in France, this project was useful to test the students online with a Quizz system.", "year": 2021, "url":"/img/qcm07.png" },
+        { "id":"4", "name":"Virtual Google Earth Model", "desc": "The project is about finding and quantifying the differences between two images of the same size. The applications were numerous: satallite imaging, medical imaging,...", "year": 2020, "type":"research", "url":"/img/diaw02.png" },
+        { "id":"5", "name":"UPS Shipping System", "desc": "This project was about the creation of a database to manage the students' internships.", "year": 2012, "type":"teaching", "url":"/img/management.png" }
       ]
       // inserts projects
       projects.forEach( (oneProject) => {
@@ -52,12 +52,11 @@ db.run("CREATE TABLE IF NOT EXISTS projects (pid INTEGER PRIMARY KEY, pname TEXT
         {"id":"1", "name": "PHP", "type": "Programming language", "desc": "Programming with PHP on the server side."},
         {"id":"2", "name": "Python", "type": "Programming language", "desc": "Programming with Python."},
         {"id":"3", "name": "Java", "type": "Programming language", "desc": "Programming with Java."},
-        {"id":"4", "name": "ImageJ", "type": "Framework", "desc": "Java Framework for Image Processing."},
+        {"id":"4", "name": "Random", "type": "Framework", "desc": "Random."},
         {"id":"5", "name": "Javascript", "type": "Programming language", "desc": "Programming with Javascript on the client side."},
         {"id":"6", "name": "Node", "type": "Programming language", "desc": "Programming with Javascript on the server side."},
         {"id":"7", "name": "Express", "type": "Framework", "desc": "A framework for programming Javascript on the server side."},
-        {"id":"8", "name": "Scikit-image", "type": "Library", "desc": "A library for Image Processing with Python."},
-        {"id":"9", "name": "OpenCV", "type": "Library", "desc": "A library for Image Processing with Python."},
+        {"id":"8", "name": "C++", "type": "Programming Language", "desc": "A library for Image Processing with Python."},
       ]
   
       // inserts skills
@@ -569,10 +568,65 @@ app.post('/projects/update/:id', (req, res)=>{
       }
       res.redirect('/projects')
     })
-  } else{
-    res.redirect('/login')
-  }
+  } 
 })
+
+app.get('/projects/about/:id', (req, res) => {
+  const projectId = req.params.id;
+
+  db.get("SELECT * FROM projects WHERE pid = ?", projectId, function (error, project) {
+    if (error) {
+        const model = {
+            dbError: true,
+            theError: error,
+            project: null,  // Adjust property name to match the template
+            isLoggedIn: req.session.isLoggedIn,
+            name: req.session.name,
+            isAdmin: req.session.isAdmin
+        }
+        res.render("error.handlebars", model);
+    } else {
+        const model = {
+            dbError: false,
+            theError: "",
+            project: project,  // Adjust property name to match the template
+            isLoggedIn: req.session.isLoggedIn,
+            name: req.session.name,
+            isAdmin: req.session.isAdmin
+        }
+        res.render("projectabout.handlebars", model);
+    }
+  });
+});
+
+app.get('/skills/about/:id', (req, res) => {
+  const skillId = req.params.id;
+
+  db.get("SELECT * FROM skills WHERE sid = ?", skillId, function (error, skill) {
+    if (error) {
+        const model = {
+            dbError: true,
+            theError: error,
+            skill: null,  // Adjust property name to match the template
+            isLoggedIn: req.session.isLoggedIn,
+            name: req.session.name,
+            isAdmin: req.session.isAdmin
+        }
+        res.render("error.handlebars", model);
+    } else {
+        const model = {
+            dbError: false,
+            theError: "",
+            skill: skill,  // Adjust property name to match the template
+            isLoggedIn: req.session.isLoggedIn,
+            name: req.session.name,
+            isAdmin: req.session.isAdmin
+        }
+        res.render("skillabout.handlebars", model);
+    }
+  });
+});
+
 
 // run the server and make it listen to the port
 app.listen(port, () => {

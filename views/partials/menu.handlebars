@@ -7,9 +7,9 @@
                     <li><a href="/skills" class="btn btn-link">Skills</a></li>
                     <li><a href="/contact" class="btn btn-link"> Contact </a></li>
                      {{#if isLoggedIn}}
-                    <li><a href="/login-get" class="btn btn-link">{{name}}</a></li>
+                    <li><a href="/login-get" class="btn btn-link" id="username">{{name}}</a></li>
                 {{else}}
-                <li><a href="/login-get" class="btn btn-link">Login</a></li>
+                <li><a href="/login-get" class="btn btn-link" id="username">Login</a></li>
                   {{/if}}
                 </ul>
     </nav>
