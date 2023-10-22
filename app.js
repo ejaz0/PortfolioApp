@@ -20,11 +20,11 @@ db.run("CREATE TABLE IF NOT EXISTS projects (pid INTEGER PRIMARY KEY, pname TEXT
       console.log("---> Table projects created!")
   
       const projects=[
-        { "id":"1", "name":"Creating monitoring programs", "type":"research", "desc": "The purpose of this project is to count people passing through a corridor and to know how many are in the room at a certain time.", "year": 2022, "dev":"Python and OpenCV (Computer vision) library", "url":"/img/counting.png" },
-        { "id":"2", "name":"Autonomus Self Driving Vehicles", "type":"research", "desc": "The project makes a 3D model of the analysis of the body of a person and displays the detected health problems. It is useful for doctors to view in 3D their patients and the evolution of a disease.", "year": 2012, "url":"/img/medical.png" },
-        { "id":"3", "name":"3D Physics Visualisation", "type":"teaching", "desc": "During the lockdowns in France, this project was useful to test the students online with a Quizz system.", "year": 2021, "url":"/img/qcm07.png" },
-        { "id":"4", "name":"Virtual Google Earth Model", "desc": "The project is about finding and quantifying the differences between two images of the same size. The applications were numerous: satallite imaging, medical imaging,...", "year": 2020, "type":"research", "url":"/img/diaw02.png" },
-        { "id":"5", "name":"UPS Shipping System", "desc": "This project was about the creation of a database to manage the students' internships.", "year": 2012, "type":"teaching", "url":"/img/management.png" }
+        { "id":"1", "name":"Creating monitoring programs", "type":"research", "desc": "The purpose of this project is to count people passing through a corridor and to know how many are in the room at a certain time.", "year": 2022, "dev":"Python and OpenCV (Computer vision) library", "url":"/img/monit.png" },
+        { "id":"2", "name":"Autonomus Self Driving Vehicles", "type":"research", "desc": "The project makes a 3D model of the analysis of the body of a person and displays the detected health problems. It is useful for doctors to view in 3D their patients and the evolution of a disease.", "year": 2012, "url":"/img/ai.jpg" },
+        { "id":"3", "name":"3D Physics Visualisation", "type":"teaching", "desc": "During the lockdowns in France, this project was useful to test the students online with a Quizz system.", "year": 2021, "url":"/img/physics.jpg" },
+        { "id":"4", "name":"Virtual Google Earth Model", "desc": "The project is about finding and quantifying the differences between two images of the same size. The applications were numerous: satallite imaging, medical imaging,...", "year": 2020, "type":"research", "url":"/img/virtualearth.jpg" },
+        { "id":"5", "name":"UPS Shipping System", "desc": "This project was about the creation of a database to manage the students' internships.", "year": 2012, "type":"teaching", "url":"/img/shipping.jpg" }
       ]
       // inserts projects
       projects.forEach( (oneProject) => {
